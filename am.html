@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="car.css">
+    <title>Carta</title>
+</head>
+<body>
+    <h1>¡Un detalle especial para una chica especial</h1>
+
+    <div class="contenedor">
+        <div class="envoltura-sobre">
+            <div class="sobre">
+                <div class="carta">
+                    <div class="contenido" id="dedicacion">
+                        <!-- Aquí se insertará el texto dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            <div class="corazon"></div>
+            <div class="solapa-derecha"></div>
+            <div class="solapa-izquierda"></div>
+        </div>
+    </div>
+
+    <script>
+        // Función para obtener el parámetro 'text' de la URL
+        function getURLParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Mostrar texto dinámico o predeterminado
+        function showDedicationText() {
+            let text = getURLParam('text');
+            if (!text) {
+                text = `Querida Katy.\n 
+            quiero que sepas que no estás sola en este momento tan pesado para tu corazón.\n  
+            Aunque ahora todo parezca difícil y agotador, confío plenamente en tu fortaleza,en esa luz que siempre has tenido incluso en los días más nublados.\n 
+            Permítete respirar, avanzar paso a paso y descansar cuando lo necesites;no tienes que cargar con todo de una sola vez. Estoy aquí para ti, para escucharte,apoyarte y recordarte, cuantas veces haga falta, lo valiosa y capaz que eres.
+                `;
+            } else {
+                text = decodeURIComponent(text).replace(/\\n/g, '\n');
+            }
+
+            // Mostrar el texto en el div
+            const contenedor = document.getElementById('dedicacion');
+            contenedor.innerText = text;
+        }
+
+        // Ejecutar cuando cargue la página
+        window.onload = showDedicationText;
+       
+    </script>
+     <script src="script._v1.js"></script>
+</body>
+</html>
+
+ 
